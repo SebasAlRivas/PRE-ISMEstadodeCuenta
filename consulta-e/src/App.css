@@ -1,0 +1,164 @@
+/* --- VARIABLES --- */
+:root {
+  --color-principal: #007bff;
+  --color-secundario: #6c757d;
+  --color-fondo: #f8f9fa;
+  --color-tarjeta: #ffffff;
+  --color-texto: #343a40;
+  --color-vencida: #dc3545;
+  --color-pendiente: #ffc107;
+}
+
+/* --- ESTILOS GLOBALES Y CONTENEDOR PRINCIPAL --- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.contenedor-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* --- CABECERA Y PIE DE PÁGINA --- */
+.cabecera {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-principal);
+  padding-bottom: 10px;
+}
+
+.info-alumno {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.1em;
+}
+
+.pie-de-pagina {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  color: var(--color-secundario);
+}
+
+/* --- SECCIÓN DE RESUMEN --- */
+.seccion-resumen {
+  margin-bottom: 30px;
+}
+
+.tarjetas-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta {
+  background-color: var(--color-tarjeta);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative; /* Esencial para que el pseudo-elemento se posicione correctamente */
+  overflow: hidden; /* Oculta cualquier parte del pseudo-elemento que sobresalga */
+}
+
+/* Estilo para la barra de color del 20% en la izquierda */
+.tarjeta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20%;
+}
+
+.tarjeta-total::before {
+  background-color: var(--color-vencida);
+}
+
+.tarjeta-pendientes::before {
+  background-color: var(--color-pendiente);
+}
+
+.tarjeta-vencidas::before {
+  background-color: var(--color-vencida);
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+  color: var(--color-secundario);
+}
+
+.tarjeta p {
+  font-size: 2em;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* --- SECCIONES DE TABLAS --- */
+.seccion-tabla {
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-tarjeta);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: var(--color-principal);
+  color: var(--color-fondo);
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* --- ESTILOS DE ESTADOS Y BOTONES --- */
+.estado-pendiente {
+  color: var(--color-pendiente);
+  font-weight: bold;
+}
+
+.estado-vencida {
+  color: var(--color-vencida);
+  font-weight: bold;
+}
+
+.btn {
+  background-color: var(--color-secundario);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.9em;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-pagar {
+  background-color: var(--color-principal);
+}
