@@ -1,3 +1,7 @@
+:root {
+  --color-principal: #c71515; /* O el color que desees, por ejemplo, un azul. */
+}
+
 /* --- ESTILOS DE LAYOUT --- */
 .app-layout {
   height: 100vh;
@@ -16,7 +20,7 @@
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--color-tarjeta-fondo);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(145, 44, 44, 0.1);
   border-bottom: 2px solid var(--color-principal);
 }
 
