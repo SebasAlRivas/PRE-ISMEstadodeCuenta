@@ -1,5 +1,6 @@
-/* --- ESTILOS DEL COMPONENTE USERINFO --- */
-.info-usuario {
+/* src/components/UserInfo.css */
+
+.info-usuario-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,10 +14,74 @@
     margin: 0;
 }
 
-.info-alumno {
+.user-avatar-toggle {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e9ecef; /* Color gris para el fondo del círculo */
+    border: 2px solid #ced4da; /* Un borde sutil para definirlo mejor */
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-principal); /* El color principal para el ícono */
+    font-size: 1.8rem;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.user-avatar-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para el menú desplegable */
+.user-dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+    min-width: 200px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.user-info-header {
+    padding: 0.75rem 1rem;
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-borde);
+    margin-bottom: 0.5rem;
+}
+
+.user-info-header p {
+    color: var(--color-texto-destacado);
+}
+
+.user-info-header small {
+    color: var(--color-secundario);
+}
+
+.user-dropdown-menu .dropdown-item {
+    padding: 0.75rem 1rem;
     color: var(--color-texto);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.user-dropdown-menu .dropdown-item:hover {
+    background-color: var(--color-principal);
+    color: white;
+}
+
+.user-dropdown-menu .dropdown-item .svg-inline--fa {
+    width: 1.25em;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

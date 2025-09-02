@@ -1,24 +1,3 @@
-:root {
-  --color-principal: #007bff; /* Azul vibrante */
-  --color-secundario: #6c757d; /* Gris */
-  --color-fondo: #f8f9fa; /* Gris claro */
-  --color-tarjeta-fondo: #ffffff; /* Blanco */
-  --color-borde: #dee2e6; /* Gris muy claro */
-  --color-texto: #343a40; /* Gris oscuro */
-  --color-texto-destacado: #212529; /* Casi negro */
-  --color-estado-vencida: #dc3545; /* Rojo */
-  --color-estado-pendiente: #ffc107; /* Amarillo */
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* --- ESTILOS DE LAYOUT --- */
 .app-layout {
   height: 100vh;
