@@ -1,0 +1,45 @@
+/* src/components/EstadoCuenta.css */
+
+.seccion-resumen {
+    margin-bottom: 2rem;
+}
+
+.tarjetas-resumen {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tarjeta {
+    background-color: var(--color-tarjeta-fondo);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 200px;
+}
+
+.tarjeta h3 {
+    color: #fff;
+    margin-top: 0;
+}
+
+.tarjeta p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.tarjeta-total {
+    background-color: #0d6efd;
+}
+
+.tarjeta-pendientes {
+    background-color: #ffc107;
+}
+
+.tarjeta-vencidas {
+    background-color: #dc3545;
+}

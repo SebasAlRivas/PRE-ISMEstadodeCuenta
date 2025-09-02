@@ -1,0 +1,22 @@
+/* --- ESTILOS DEL COMPONENTE USERINFO --- */
+.info-usuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.titulo-app {
+    font-size: 1.5rem;
+    color: var(--color-texto-destacado);
+    margin: 0;
+}
+
+.info-alumno {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.9em;
+    color: var(--color-texto);
+}

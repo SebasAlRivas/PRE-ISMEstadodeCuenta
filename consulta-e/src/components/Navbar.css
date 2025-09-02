@@ -1,0 +1,66 @@
+/* Estilos para el Navbar lateral en pantallas grandes */
+.sidebar-wrapper {
+    background-color: #343a40; /* Color de fondo oscuro para la barra lateral */
+    color: #fff; /* Color de texto blanco */
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+}
+
+.custom-navbar {
+    background-color: #343a40 !important;
+    padding: 0;
+    width: 100%;
+    border-right: 2px solid #007bff;
+    height: 100%;
+}
+
+.custom-navbar .navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: bold;
+    padding: 1.2rem 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #fff !important;
+    background-color: #495057;
+    border-left-color: #007bff;
+}
+
+.custom-navbar .nav-link.active {
+    color: #fff !important;
+    background-color: #212529;
+    border-left-color: #007bff;
+}
+
+/* Estilos para el Navbar superior en pantallas pequeñas */
+.top-navbar {
+    background-color: #343a40 !important;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-navbar .navbar-brand {
+    color: #fff;
+}
+
+.top-navbar .navbar-toggler {
+    background-color: #fff;
+}
+
+.top-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.top-navbar .nav-link.active {
+    color: #fff !important;
+}
