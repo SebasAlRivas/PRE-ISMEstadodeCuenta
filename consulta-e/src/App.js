@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import './App.css';
 import AppNavbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
@@ -13,7 +11,6 @@ import EstadoCuenta from './components/EstadoCuenta';
  * las cuotas pendientes y un historial de pagos.
  */
 function App() {
-    // === SECCIÓN DE DATOS ===
     const datosAlumno = {
         nombre: "Juan Pérez",
         dni: "34567890",
@@ -29,39 +26,13 @@ function App() {
         ]
     };
 
-    // === GESTIÓN DE ESTADO ===
-    const [filtroAnio, setFiltroAnio] = useState('');
-    const [criterioOrden, setCriterioOrden] = useState('fecha');
-    const [filtroNroCuota, setFiltroNroCuota] = useState('');
-    const [filtroPeriodo, setFiltroPeriodo] = useState('');
-    const [filtroImporte, setFiltroImporte] = useState('');
-    const [filtroFechaPago, setFiltroFechaPago] = useState('');
-    const [filtroMedioPago, setFiltroMedioPago] = useState('');
     const [reporteActivo, setReporteActivo] = useState('Consulta Estado de cuenta');
 
-    const cuotasPagadas = datosAlumno.cuotas
-        .filter(c => c.estado === 'Pagada')
-        .filter(c => filtroNroCuota ? String(c.nro).includes(filtroNroCuota) : true)
-        .filter(c => filtroPeriodo ? c.periodo.toLowerCase().includes(filtroPeriodo.toLowerCase()) : true)
-        .filter(c => filtroImporte ? String(c.importe).includes(filtroImporte) : true)
-        .filter(c => filtroFechaPago ? c.fechaPago.includes(filtroFechaPago) : true)
-        .filter(c => filtroMedioPago ? c.medioPago.toLowerCase().includes(filtroMedioPago.toLowerCase()) : true)
-        .filter(c => filtroAnio ? c.fechaPago.startsWith(filtroAnio) : true)
-        .sort((a, b) => {
-            if (criterioOrden === 'fecha') {
-                return new Date(a.fechaPago) - new Date(b.fechaPago);
-            }
-            if (criterioOrden === 'monto') {
-                return a.importe - b.importe;
-            }
-            return 0;
-        });
-
     const cuotasImpagas = datosAlumno.cuotas.filter(c => c.estado !== 'Pagada');
+    const cuotasPagadas = datosAlumno.cuotas.filter(c => c.estado === 'Pagada');
     const deudaTotal = cuotasImpagas.reduce((acc, cuota) => acc + cuota.importe, 0);
     const cuotasPendientesCount = cuotasImpagas.filter(c => c.estado === 'Pendiente').length;
     const cuotasVencidasCount = cuotasImpagas.filter(c => c.estado === 'Vencida').length;
-    const mediosDePagoDisponibles = [...new Set(datosAlumno.cuotas.filter(c => c.estado === 'Pagada').map(c => c.medioPago))];
 
     const manejarPago = (importe) => {
         alert(`Simulando pago de $${importe}. Redirigiendo a pasarela de pagos...`);
@@ -71,17 +42,15 @@ function App() {
         setReporteActivo(reporte);
     };
 
-    // === SECCIÓN DE RENDERIZADO (JSX) ===
     return (
-        <Row className="h-100">
-            <Col md={3} lg={2} className="p-0">
+        <div className="app-layout">
+            <div className="nav-col">
                 <AppNavbar reporteActivo={reporteActivo} onCambioReporte={manejarCambioReporte} />
-            </Col>
-            <Col xs={12} md={9} lg={10} className="p-0 main-content">
+            </div>
+            <div className="main-content">
                 <header className="cabecera">
                     <UserInfo datosAlumno={datosAlumno} />
                 </header>
-
                 <main className="contenedor-principal">
                     {reporteActivo === 'Consulta Estado de cuenta' && (
                         <EstadoCuenta
@@ -91,21 +60,6 @@ function App() {
                             cuotasImpagas={cuotasImpagas}
                             cuotasPagadas={cuotasPagadas}
                             manejarPago={manejarPago}
-                            filtroAnio={filtroAnio}
-                            setFiltroAnio={setFiltroAnio}
-                            criterioOrden={criterioOrden}
-                            setCriterioOrden={setCriterioOrden}
-                            filtroNroCuota={filtroNroCuota}
-                            setFiltroNroCuota={setFiltroNroCuota}
-                            filtroPeriodo={filtroPeriodo}
-                            setFiltroPeriodo={setFiltroPeriodo}
-                            filtroImporte={filtroImporte}
-                            setFiltroImporte={setFiltroImporte}
-                            filtroFechaPago={filtroFechaPago}
-                            setFiltroFechaPago={setFiltroFechaPago}
-                            filtroMedioPago={filtroMedioPago}
-                            setFiltroMedioPago={setFiltroMedioPago}
-                            mediosDePagoDisponibles={mediosDePagoDisponibles}
                         />
                     )}
                     {reporteActivo === 'Registro de Pagos' && (
@@ -130,8 +84,8 @@ function App() {
                 <footer className="pie-de-pagina">
                     <p>&copy; 2024 Instituto Superior del Milagro. Todos los derechos reservados.</p>
                 </footer>
-            </Col>
-        </Row>
+            </div>
+        </div>
     );
 }
 

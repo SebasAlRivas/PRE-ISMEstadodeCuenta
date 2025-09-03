@@ -1,20 +1,36 @@
 /* src/components/Navbar.css */
+
 .app-navbar {
-    background-color: var(--color-principal); /* Utiliza la variable global */
-    height: 100vh;
+    background-color: #212529;
     padding: 0;
+    height: 100%;
+    /* Quita 'overflow-y: auto;' de aquí */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; 
+}
+
+/* Nueva regla para el contenedor de los enlaces (la etiqueta <Nav>) */
+.app-navbar .nav {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto; /* La barra de desplazamiento ahora está aquí */
+    text-align: center;
 }
 
 .app-navbar .navbar-brand {
-    color: #fff;
+    color: #f8f9fa;
     font-weight: bold;
-    padding: 1rem 1rem;
     display: block;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
 }
 
 .app-navbar .nav-link {
-    color: #f1f1f1;
+    color: #f8f9fa;
     font-size: 1.1em;
     padding: 1rem;
     transition: background-color 0.2s ease-in-out;
@@ -22,6 +38,6 @@
 
 .app-navbar .nav-link:hover,
 .app-navbar .nav-link.active {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-principal);
 }

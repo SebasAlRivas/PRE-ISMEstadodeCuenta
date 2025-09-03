@@ -1,41 +1,45 @@
 import React, { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import './UserInfo.css'; // Asegúrate de tener este archivo CSS
+import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import './UserInfo.css';
 
 const UserInfo = ({ datosAlumno }) => {
     const [showDropdown, setShowDropdown] = useState(false);
 
     const handleToggle = () => setShowDropdown(!showDropdown);
+    const handleSignOut = () => {
+        alert("Cerrando sesión...");
+    };
 
     return (
         <div className="info-usuario-container">
-            <h1 className="titulo-app">Estado de Cuenta Alumno</h1>
-            <Dropdown show={showDropdown} onToggle={handleToggle} align="end">
-                <Dropdown.Toggle as="div" className="user-avatar-toggle">
-                    {/* Puedes reemplazar faUserCircle con una imagen real del usuario si la tienes */}
-                    <FontAwesomeIcon icon={faUserCircle} className="user-avatar-icon" />
-                </Dropdown.Toggle>
+            {/* Div para el espaciador izquierdo */}
+            <div className="header-left-spacer"></div>
 
-                <Dropdown.Menu className="user-dropdown-menu">
-                    <Dropdown.Header className="user-info-header">
-                        <p className="mb-0 fw-bold">{datosAlumno.nombre}</p>
-                        <small className="text-muted">DNI: {datosAlumno.dni}</small>
-                    </Dropdown.Header>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="#/perfil">
-                        <FontAwesomeIcon icon={faUserCircle} className="me-2" /> Perfil
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/configuracion">
-                        <FontAwesomeIcon icon={faCog} className="me-2" /> Configuración
-                    </Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="#/logout">
-                        <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Cerrar Sesión
-                    </Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+            {/* Título de la aplicación, ahora en el centro */}
+            <h1 className="titulo-app">Portal Alumno</h1>
+
+            {/* Div contenedor para el menú de usuario */}
+            <div className="header-right-container">
+                <Dropdown show={showDropdown} onToggle={handleToggle} drop="start">
+                    <Dropdown.Toggle as="div" className="user-avatar-toggle" id="dropdown-custom-components">
+                        <FontAwesomeIcon icon={faUser} />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="user-dropdown-menu">
+                        <div className="user-info-header">
+                            <p className="mb-0">
+                                <strong>{datosAlumno.nombre}</strong>
+                            </p>
+                            <small className="text-muted">DNI: {datosAlumno.dni}</small>
+                        </div>
+                        <Dropdown.Item onClick={handleSignOut}>
+                            <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />
+                            Cerrar sesión
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
         </div>
     );
 };
