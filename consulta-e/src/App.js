@@ -15,14 +15,14 @@ function App() {
         nombre: "Juan Pérez",
         dni: "34567890",
         cuotas: [
-            { id: 1, nro: 1, periodo: 'Marzo 2024', importe: 20000, vencimiento: '2024-03-10', estado: 'Pagada', fechaPago: '2024-03-09', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_1.pdf' },
-            { id: 2, nro: 2, periodo: 'Abril 2024', importe: 20000, vencimiento: '2024-04-10', estado: 'Pagada', fechaPago: '2024-04-11', medioPago: 'Rapipago', comprobanteUrl: 'comprobante_2.pdf' },
-            { id: 3, nro: 3, periodo: 'Mayo 2024', importe: 20000, vencimiento: '2024-05-10', estado: 'Pagada', fechaPago: '2024-05-10', medioPago: 'Tarjeta de Crédito', comprobanteUrl: 'comprobante_3.pdf' },
-            { id: 4, nro: 4, periodo: 'Junio 2024', importe: 20000, vencimiento: '2024-06-10', estado: 'Pagada', fechaPago: '2024-06-10', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_4.pdf' },
-            { id: 5, nro: 5, periodo: 'Julio 2024', importe: 20000, vencimiento: '2024-07-10', estado: 'Vencida' },
-            { id: 6, nro: 6, periodo: 'Agosto 2024', importe: 20000, vencimiento: '2024-08-10', estado: 'Vencida' },
-            { id: 7, nro: 7, periodo: 'Septiembre 2024', importe: 20000, vencimiento: '2024-09-10', estado: 'Pendiente' },
-            { id: 8, nro: 8, periodo: 'Octubre 2024', importe: 20000, vencimiento: '2024-10-10', estado: 'Pendiente' },
+            { id: 1, nro: 1, periodo: 'Marzo 2025', importe: 20000, vencimiento: '2025-03-10', estado: 'Pagada', fechaPago: '2025-03-09', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_1.pdf' },
+            { id: 2, nro: 2, periodo: 'Abril 2025', importe: 20000, vencimiento: '2025-04-10', estado: 'Pagada', fechaPago: '2025-04-11', medioPago: 'Rapipago', comprobanteUrl: 'comprobante_2.pdf' },
+            { id: 3, nro: 3, periodo: 'Mayo 2025', importe: 20000, vencimiento: '2025-05-10', estado: 'Pagada', fechaPago: '2025-05-10', medioPago: 'Tarjeta de Crédito', comprobanteUrl: 'comprobante_3.pdf' },
+            { id: 4, nro: 4, periodo: 'Junio 2025', importe: 20000, vencimiento: '2025-06-10', estado: 'Pagada', fechaPago: '2025-06-10', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_4.pdf' },
+            { id: 5, nro: 5, periodo: 'Julio 2025', importe: 20000, vencimiento: '2025-07-10', estado: 'Vencida' },
+            { id: 6, nro: 6, periodo: 'Agosto 2025', importe: 20000, vencimiento: '2025-08-10', estado: 'Vencida' },
+            { id: 7, nro: 7, periodo: 'Septiembre 2025', importe: 20000, vencimiento: '2025-09-10', estado: 'Pendiente' },
+            { id: 8, nro: 8, periodo: 'Octubre 2025', importe: 20000, vencimiento: '2025-10-10', estado: 'Pendiente' },
         ]
     };
 
@@ -82,7 +82,7 @@ function App() {
                     )}
                 </main>
                 <footer className="pie-de-pagina">
-                    <p>&copy; 2024 Instituto Superior del Milagro. Todos los derechos reservados.</p>
+                    <p>&copy; 2025 Instituto Superior del Milagro. Todos los derechos reservados.</p>
                 </footer>
             </div>
         </div>
