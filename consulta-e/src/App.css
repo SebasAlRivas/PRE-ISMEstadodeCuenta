@@ -1,27 +1,52 @@
 :root {
-  --color-principal: #c71515; /* O el color que desees, por ejemplo, un azul. */
+  --color-principal: rgb(139, 42, 48); /* Rojo oscuro para la cabecera */
+  --color-secundario: #6c757d; /* Gris */
+  --color-fondo: #f8f9fa; /* Gris claro para el fondo principal */
+  --color-tarjeta-fondo: #ffffff; /* Blanco */
+  --color-borde: #dee2e6; /* Gris muy claro */
+  --color-texto: #343a40; /* Gris oscuro */
+  --color-texto-claro: #f8f9fa; /* Blanco para textos sobre fondos oscuros */
+  --color-estado-vencida: #dc3545; /* Rojo */
+  --color-estado-pendiente: #ffc107; /* Amarillo */
 }
 
-/* --- ESTILOS DE LAYOUT --- */
-.app-layout {
-  height: 100vh;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Estilos de Layout de la aplicación --- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.nav-col {
+  height: 100vh; /* Este div define la altura total para la nav bar */
+  width: 250px;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex-grow: 1;
 }
-
 .cabecera {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--color-tarjeta-fondo);
   box-shadow: 0 2px 4px rgba(145, 44, 44, 0.1);
   border-bottom: 2px solid var(--color-principal);
+  background-color: var(--color-principal); /* Fondo rojo sólido */
+  height: 80px; /* Altura fija para la cabecera */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--color-texto-claro);
 }
 
 .contenedor-principal {
@@ -34,6 +59,6 @@
   text-align: center;
   padding: 1rem;
   background-color: var(--color-principal);
-  color: #fff;
+  color: var(--color-texto-claro);
   margin-top: auto;
 }

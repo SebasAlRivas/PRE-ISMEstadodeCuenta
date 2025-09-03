@@ -1,27 +1,39 @@
 /* src/components/Navbar.css */
+
 .app-navbar {
-    background-color: var(--color-principal); /* Utiliza la variable global */
-    height: 100vh;
+    background-color: var(--color-principal); /* Aplica el color de fondo de EstadoCuenta */
     padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .app-navbar .navbar-brand {
-    color: #fff;
+    color: var(--color-principal); /* Utiliza el color principal del tema */
     font-weight: bold;
-    padding: 1rem 1rem;
     display: block;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
 }
 
 .app-navbar .nav-link {
-    color: #f1f1f1;
+    color: var(--color-texto); /* Utiliza el color de texto del tema */
     font-size: 1.1em;
     padding: 1rem;
     transition: background-color 0.2s ease-in-out;
+    text-align: center;
 }
 
 .app-navbar .nav-link:hover,
 .app-navbar .nav-link.active {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-principal); /* El color principal para el ícono y texto */
+}
+
+.app-navbar .nav-link.active {
+    font-weight: bold;
 }
