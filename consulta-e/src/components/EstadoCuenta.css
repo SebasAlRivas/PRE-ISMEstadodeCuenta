@@ -1,45 +1,37 @@
-/* src/components/EstadoCuenta.css */
-
-.seccion-resumen {
-    margin-bottom: 2rem;
+.titulo-seccion {
+    color: var(--color-principal);
+    font-weight: 600;
 }
 
-.tarjetas-resumen {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+.resumen-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tarjeta {
-    background-color: var(--color-tarjeta-fondo);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    flex: 1 1 200px;
+.resumen-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.tarjeta h3 {
-    color: #fff;
-    margin-top: 0;
+.tarjeta-deuda {
+    background-color: var(--color-secundario);
+    color: white;
 }
 
-.tarjeta p {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0;
-    color: #fff;
+/* Color para cuando no hay cuotas vencidas (estado 0) */
+.tarjeta-sin-vencidas {
+    background-color: #28a745 !important; /* Verde */
+    color: white !important;
 }
 
-.tarjeta-total {
-    background-color: #0d6efd;
+/* Color para cuando hay 1 cuota vencida (estado 1) */
+.tarjeta-una-vencida {
+    background-color: #ffc107 !important; /* Amarillo */
+    color: #343a40 !important; /* Texto oscuro */
 }
 
-.tarjeta-pendientes {
-    background-color: #ffc107;
-}
-
-.tarjeta-vencidas {
-    background-color: #dc3545;
+/* Color para cuando hay 2 o más cuotas vencidas (estado 2 o más) */
+.tarjeta-mas-de-una-vencida {
+    background-color: #dc3545 !important; /* Rojo */
+    color: white !important;
 }

@@ -1,72 +1,58 @@
 import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import CuotasPendientes from './CuotasPendientes';
 import HistorialDePagos from './HistorialDePagos';
 import './EstadoCuenta.css';
 
 const EstadoCuenta = ({
     deudaTotal,
-    cuotasPendientesCount,
     cuotasVencidasCount,
     cuotasImpagas,
     cuotasPagadas,
     manejarPago,
-    filtroAnio,
-    setFiltroAnio,
-    criterioOrden,
-    setCriterioOrden,
-    filtroNroCuota,
-    setFiltroNroCuota,
-    filtroPeriodo,
-    setFiltroPeriodo,
-    filtroImporte,
-    setFiltroImporte,
-    filtroFechaPago,
-    setFiltroFechaPago,
-    filtroMedioPago,
-    setFiltroMedioPago,
-    mediosDePagoDisponibles
 }) => {
     return (
-        <>
-            <section className="seccion-resumen">
-                <h2>Estado Cuenta</h2>
-                <div className="tarjetas-resumen">
-                    <div className="tarjeta tarjeta-total">
-                        <h3>Deuda Total</h3>
-                        <p>${deudaTotal.toLocaleString('es-AR')}</p>
-                    </div>
-                    <div className="tarjeta tarjeta-pendientes">
-                        <h3>Cuotas Pendientes</h3>
-                        <p>{cuotasPendientesCount}</p>
-                    </div>
-                    <div className="tarjeta tarjeta-vencidas">
-                        <h3>Cuotas Vencidas</h3>
-                        <p>{cuotasVencidasCount}</p>
-                    </div>
-                </div>
-            </section>
+        <Container fluid>
+            <Row className="mb-4 text-center">
+                <Col md={12}>
+                    <h2 className="titulo-seccion mb-4">Estado de Cuenta del Alumno</h2>
+                </Col>
+            </Row>
 
-            <CuotasPendientes cuotas={cuotasImpagas} onPagar={manejarPago} />
-
-            <HistorialDePagos
-                cuotas={cuotasPagadas}
-                filtroAnio={filtroAnio}
-                setFiltroAnio={setFiltroAnio}
-                criterioOrden={criterioOrden}
-                setCriterioOrden={setCriterioOrden}
-                filtroNroCuota={filtroNroCuota}
-                setFiltroNroCuota={setFiltroNroCuota}
-                filtroPeriodo={filtroPeriodo}
-                setFiltroPeriodo={setFiltroPeriodo}
-                filtroImporte={filtroImporte}
-                setFiltroImporte={setFiltroImporte}
-                filtroFechaPago={filtroFechaPago}
-                setFiltroFechaPago={setFiltroFechaPago}
-                filtroMedioPago={filtroMedioPago}
-                setFiltroMedioPago={setFiltroMedioPago}
-                mediosDePagoDisponibles={mediosDePagoDisponibles}
-            />
-        </>
+            <Row className="mb-4">
+                <Col md={6}>
+                    <Card className="resumen-card tarjeta-deuda shadow-sm text-center">
+                        <Card.Body>
+                            <h5 className="mb-0">Deuda Total</h5>
+                            <h3 className="mb-0">${deudaTotal.toLocaleString('es-AR')}</h3>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={6}>
+                    <Card className={`resumen-card shadow-sm text-center ${
+                        cuotasVencidasCount === 0 ? 'tarjeta-sin-vencidas' : 
+                        cuotasVencidasCount === 1 ? 'tarjeta-una-vencida' : 'tarjeta-mas-de-una-vencida'
+                    }`}>
+                        <Card.Body>
+                            <h5 className="mb-0">Cuotas Vencidas</h5>
+                            <h3 className="mb-0">{cuotasVencidasCount}</h3>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            
+            <Row className="mt-5">
+                <Col md={12}>
+                    <CuotasPendientes cuotasImpagas={cuotasImpagas} manejarPago={manejarPago} />
+                </Col>
+            </Row>
+            
+            <Row className="mt-5">
+                <Col md={12}>
+                    <HistorialDePagos cuotasPagadas={cuotasPagadas} />
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

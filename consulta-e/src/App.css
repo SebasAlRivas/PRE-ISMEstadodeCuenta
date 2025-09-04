@@ -1,64 +1,63 @@
 :root {
-  --color-principal: rgb(139, 42, 48); /* Rojo oscuro para la cabecera */
-  --color-secundario: #6c757d; /* Gris */
-  --color-fondo: #f8f9fa; /* Gris claro para el fondo principal */
-  --color-tarjeta-fondo: #ffffff; /* Blanco */
-  --color-borde: #dee2e6; /* Gris muy claro */
-  --color-texto: #343a40; /* Gris oscuro */
-  --color-texto-claro: #f8f9fa; /* Blanco para textos sobre fondos oscuros */
-  --color-estado-vencida: #dc3545; /* Rojo */
-  --color-estado-pendiente: #ffc107; /* Amarillo */
+  --color-principal: #5d021c; /* Color rojo/granate para la cabecera */
+  --color-secundario: #212529; /* Color oscuro para la barra de navegación */
+  --color-terciario: #1a1a1a;
+  --color-texto-claro: #f8f9fa;
+  --color-texto-oscuro: #343a40;
+  --color-fondo: #f0f2f5;
+  --color-hover: #ffffff1a;
+  --color-sombra: rgba(0, 0, 0, 0.1);
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html, body, #root {
+  height: 100%;
 }
 
-/* --- Estilos de Layout de la aplicación --- */
 .app-layout {
-  display: flex;
-  min-height: 100vh;
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
 }
 
 .nav-col {
-  height: 100vh; /* Este div define la altura total para la nav bar */
-  width: 250px;
+    width: 280px;
+    background-color: var(--color-secundario);
+    /* Elimina el padding de aquí */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
+
 .cabecera {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--color-tarjeta-fondo);
-  box-shadow: 0 2px 4px rgba(145, 44, 44, 0.1);
-  border-bottom: 2px solid var(--color-principal);
-  background-color: var(--color-principal); /* Fondo rojo sólido */
-  height: 80px; /* Altura fija para la cabecera */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: var(--color-texto-claro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-principal); 
+    height: 80px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--color-texto-claro);
 }
 
 .contenedor-principal {
-  padding: 2rem;
-  flex-grow: 1;
-  overflow-y: auto;
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
 }
 
 .pie-de-pagina {
-  text-align: center;
-  padding: 1rem;
-  background-color: var(--color-principal);
-  color: var(--color-texto-claro);
-  margin-top: auto;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -5,13 +5,25 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 1rem;
+}
+
+/* El espaciador invisible se estira para empujar el título al centro */
+.header-left-spacer {
+    flex-grow: 1;
 }
 
 .titulo-app {
     font-size: 1.5rem;
-    color: var(--color-texto-destacado);
-    margin: 0;
+    color: var(--color-texto-claro);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+/* Este nuevo contenedor se estira al igual que el espaciador izquierdo */
+.header-right-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
 }
 
 .user-avatar-toggle {
@@ -19,12 +31,12 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #e9ecef; /* Color gris para el fondo del círculo */
-    border: 2px solid #ced4da; /* Un borde sutil para definirlo mejor */
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-borde);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-principal); /* El color principal para el ícono */
+    color: var(--color-principal);
     font-size: 1.8rem;
     transition: all 0.2s ease-in-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -35,7 +47,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos para el menú desplegable */
 .user-dropdown-menu {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -52,7 +63,7 @@
 }
 
 .user-info-header p {
-    color: var(--color-texto-destacado);
+    color: var(--color-texto);
 }
 
 .user-info-header small {
