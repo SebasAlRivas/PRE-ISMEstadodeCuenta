@@ -37,7 +37,7 @@ function App() {
     const administrativa = {
         nombre: "Secretaría Administrativa",
         dni: "00000001",
-        rol: "Administrativo", // ¡Cambio realizado aquí!
+        rol: "Administrativo",
         cuotas: [] 
     };
 
