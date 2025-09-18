@@ -9,7 +9,12 @@ import './EstadoCuenta.css';
 const EstadoCuenta = ({ usuario, alumnos, manejarPago }) => {
     // Si el rol es 'Administrativo', muestra la vista del buscador
     if (usuario.rol === 'Administrativo') {
-        return <VistaAdministrativa alumnos={alumnos} manejarPago={manejarPago} />;
+        return (
+            <Container fluid>
+                <UserInfo datosAlumno={usuario} />
+                <VistaAdministrativa alumnos={alumnos} manejarPago={manejarPago} />
+            </Container>
+        );
     }
 
     // Si el rol es 'Alumno', muestra la vista de alumno
