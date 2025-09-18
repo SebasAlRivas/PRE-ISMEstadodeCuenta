@@ -5,35 +5,35 @@ import './Navbar.css';
 
 const AppNavbar = ({ reporteActivo, onCambioReporte }) => {
     return (
-        <Navbar expand="lg" variant="dark" className="app-navbar flex-column align-items-center">
-            <Navbar.Brand className="text-center w-100 mb-3">
+        <Navbar expand="lg" variant="dark" className="barra-navegacion flex-column align-items-center">
+            <Navbar.Brand className="texto-centrado ancho-completo mb-3">
                 <i className="bi bi-bank me-2"></i>
                 Gestión ISM
             </Navbar.Brand>
-            <Nav className="flex-column text-center w-100">
+            <Nav className="flex-column texto-centrado ancho-completo">
                 <Nav.Link
-                    className={`nav-link ${reporteActivo === 'Consulta Estado de cuenta' ? 'active' : ''}`}
+                    className={`enlace-nav ${reporteActivo === 'Consulta Estado de cuenta' ? 'activo' : ''}`}
                     onClick={() => onCambioReporte('Consulta Estado de cuenta')}
                 >
                     <i className="bi bi-file-earmark-text-fill me-2"></i>
                     Estado de cuenta
                 </Nav.Link>
                 <Nav.Link
-                    className={`nav-link ${reporteActivo === 'Registro de Pagos' ? 'active' : ''}`}
+                    className={`enlace-nav ${reporteActivo === 'Registro de Pagos' ? 'activo' : ''}`}
                     onClick={() => onCambioReporte('Registro de Pagos')}
                 >
                     <i className="bi bi-journal-check me-2"></i>
                     Registro de Pagos
                 </Nav.Link>
                 <Nav.Link
-                    className={`nav-link ${reporteActivo === 'Generación de Cupones' ? 'active' : ''}`}
+                    className={`enlace-nav ${reporteActivo === 'Generación de Cupones' ? 'activo' : ''}`}
                     onClick={() => onCambioReporte('Generación de Cupones')}
                 >
                     <i className="bi bi-printer-fill me-2"></i>
                     Generación de Cupones
                 </Nav.Link>
                 <Nav.Link
-                    className={`nav-link ${reporteActivo === 'Reportes Administrativos' ? 'active' : ''}`}
+                    className={`enlace-nav ${reporteActivo === 'Reportes Administrativos' ? 'activo' : ''}`}
                     onClick={() => onCambioReporte('Reportes Administrativos')}
                 >
                     <i className="bi bi-file-earmark-bar-graph-fill me-2"></i>

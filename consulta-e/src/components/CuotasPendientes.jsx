@@ -3,7 +3,7 @@ import { Card, Table, Alert, Button } from 'react-bootstrap';
 
 const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
   return (
-    <Card className="shadow-sm">
+    <Card className="sombra-pequena">
       <Card.Header className="bg-primary text-white">
         <h5 className="mb-0">Cuotas Pendientes</h5>
       </Card.Header>
@@ -11,7 +11,7 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
         {cuotasImpagas.length === 0 ? (
           <Alert variant="success">No tenés cuotas pendientes. ¡Excelente!</Alert>
         ) : (
-          <Table striped bordered hover responsive className="text-center">
+          <Table striped bordered hover responsive className="texto-centrado">
             <thead>
               <tr>
                 <th>Nro. Cuota</th>

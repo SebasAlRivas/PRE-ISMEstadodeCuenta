@@ -1,37 +1,79 @@
+.seccion-tabla {
+    background-color: var(--color-tarjeta-fondo);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+h2 {
+    color: var(--color-principal);
+    border-bottom: 2px solid var(--color-borde);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
 .titulo-seccion {
     color: var(--color-principal);
     font-weight: 600;
 }
 
-.resumen-card {
+/* Modificado para que las tarjetas no se extiendan, ocupando solo el contenido */
+.tarjeta-resumen {
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: auto;
+    flex-grow: 0;
+    text-align: center; /* Centra el texto dentro de la tarjeta */
 }
 
-.resumen-card:hover {
+.tarjeta-resumen:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Color para la tarjeta de deuda, ahora es roja */
 .tarjeta-deuda {
-    background-color: var(--color-secundario);
+    background-color: var(--color-principal);
     color: white;
 }
 
 /* Color para cuando no hay cuotas vencidas (estado 0) */
 .tarjeta-sin-vencidas {
-    background-color: #28a745 !important; /* Verde */
+    background-color: #28a745 !important;
     color: white !important;
 }
 
-/* Color para cuando hay 1 cuota vencida (estado 1) */
+/* Color para una sola cuota vencida (estado 1) */
 .tarjeta-una-vencida {
-    background-color: #ffc107 !important; /* Amarillo */
-    color: #343a40 !important; /* Texto oscuro */
+    background-color: #ffc107 !important;
+    color: white !important;
 }
 
-/* Color para cuando hay 2 o más cuotas vencidas (estado 2 o más) */
+/* Color para más de una cuota vencida (estado > 1) */
 .tarjeta-mas-de-una-vencida {
-    background-color: #dc3545 !important; /* Rojo */
+    background-color: #dc3545 !important;
     color: white !important;
+}
+
+/* Restauramos la clase de la cabecera roja */
+.cabecera-estado-cuenta {
+    background-color: var(--color-principal);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* Aumentamos el tamaño de la fuente para el título principal */
+.titulo-seccion-blanco {
+    color: white;
+    font-weight: 600;
+    font-size: 2rem; /* Aumentado */
+}
+
+/* Aumentamos el tamaño de la fuente para el texto de "Portal Alumno" */
+.portal-alumno-texto {
+    color: white;
+    font-size: 1.25rem; /* Aumentado */
+    margin-top: 5px;
 }

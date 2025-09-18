@@ -2,16 +2,27 @@ import React, { useState, useMemo } from 'react';
 import { Card, Table, Alert, Button, Form } from 'react-bootstrap';
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa';
 import { jsPDF } from "jspdf";
-import 'jspdf-autotable'; // Mantenemos esta línea, aunque con la siguiente ya no sería estrictamente necesaria
-import autoTable from 'jspdf-autotable'; // Importamos el plugin explícitamente
+import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
+import './HistorialDePagos.css';
 
 const HistorialDePagos = ({ cuotasPagadas }) => {
-    const [filtro, setFiltro] = useState('');
+    const [filtroTexto, setFiltroTexto] = useState('');
+    const [filtroEstado, setFiltroEstado] = useState('Todos');
+    const [filtroAnio, setFiltroAnio] = useState('Todos');
     const [ordenarPor, setOrdenarPor] = useState(null);
     const [ordenDireccion, setOrdenDireccion] = useState('asc');
 
-    const manejarFiltroChange = (e) => {
-        setFiltro(e.target.value);
+    const manejarFiltroTextoChange = (e) => {
+        setFiltroTexto(e.target.value);
+    };
+
+    const manejarFiltroEstadoChange = (e) => {
+        setFiltroEstado(e.target.value);
+    };
+
+    const manejarFiltroAnioChange = (e) => {
+        setFiltroAnio(e.target.value);
     };
 
     const manejarOrdenacion = (campo) => {
@@ -26,55 +37,58 @@ const HistorialDePagos = ({ cuotasPagadas }) => {
     const cuotasFiltradasYOrdenadas = useMemo(() => {
         let cuotasTrabajo = [...cuotasPagadas];
 
-        if (filtro) {
+        // Filtrar por estado
+        if (filtroEstado !== 'Todos') {
+            cuotasTrabajo = cuotasTrabajo.filter(cuota => cuota.estado === filtroEstado);
+        }
+
+        // Filtrar por año
+        if (filtroAnio !== 'Todos') {
+            cuotasTrabajo = cuotasTrabajo.filter(cuota => {
+                const anioCuota = cuota.periodo.split(' ')[1];
+                return anioCuota === filtroAnio;
+            });
+        }
+        
+        // Filtrar por texto
+        if (filtroTexto) {
             cuotasTrabajo = cuotasTrabajo.filter(cuota =>
                 Object.values(cuota).some(valor =>
-                    String(valor).toLowerCase().includes(filtro.toLowerCase())
+                    String(valor).toLowerCase().includes(filtroTexto.toLowerCase())
                 )
             );
         }
 
+        // Ordenar los resultados
         if (ordenarPor) {
             cuotasTrabajo.sort((a, b) => {
-                let valorA = a[ordenarPor];
-                let valorB = b[ordenarPor];
+                const aValue = a[ordenarPor];
+                const bValue = b[ordenarPor];
 
-                if (typeof valorA === 'number' && typeof valorB === 'number') {
-                    return ordenDireccion === 'asc' ? valorA - valorB : valorB - valorA;
-                }
-                
-                valorA = String(valorA).toLowerCase();
-                valorB = String(valorB).toLowerCase();
-
-                if (valorA < valorB) {
-                    return ordenDireccion === 'asc' ? -1 : 1;
-                }
-                if (valorA > valorB) {
-                    return ordenDireccion === 'asc' ? 1 : -1;
-                }
+                if (aValue < bValue) return ordenDireccion === 'asc' ? -1 : 1;
+                if (aValue > bValue) return ordenDireccion === 'asc' ? 1 : -1;
                 return 0;
             });
         }
 
         return cuotasTrabajo;
-    }, [cuotasPagadas, filtro, ordenarPor, ordenDireccion]);
+    }, [cuotasPagadas, filtroTexto, filtroEstado, filtroAnio, ordenarPor, ordenDireccion]);
+
+    const aniosDisponibles = useMemo(() => {
+        const anios = [...new Set(cuotasPagadas.map(cuota => cuota.periodo.split(' ')[1]))];
+        return ['Todos', ...anios.sort()];
+    }, [cuotasPagadas]);
 
     const renderSortIcon = (campo) => {
-        if (ordenarPor !== campo) {
-            return <FaSort className="ms-2" />;
+        if (ordenarPor === campo) {
+            return ordenDireccion === 'asc' ? <FaSortUp /> : <FaSortDown />;
         }
-        if (ordenDireccion === 'asc') {
-            return <FaSortUp className="ms-2" />;
-        }
-        return <FaSortDown className="ms-2" />;
+        return <FaSort />;
     };
 
-    const handleExportPDF = () => {
+    const generarPDF = () => {
         const doc = new jsPDF();
-        
-        // **LA LÍNEA CLAVE PARA VERSIONES MODERNAS**
         autoTable(doc, {
-            startY: 55,
             head: [['Nro. Cuota', 'Período', 'Importe', 'Estado', 'Fecha de Pago', 'Medio de Pago']],
             body: cuotasFiltradasYOrdenadas.map(cuota => [
                 cuota.nro,
@@ -82,72 +96,61 @@ const HistorialDePagos = ({ cuotasPagadas }) => {
                 `$${cuota.importe.toLocaleString('es-AR')}`,
                 cuota.estado,
                 cuota.fechaPago,
-                cuota.medioPago
+                cuota.medioPago,
             ]),
-            theme: 'striped',
-            headStyles: {
-                fillColor: [93, 2, 28],
-                textColor: [255, 255, 255],
-                fontStyle: 'bold',
-                halign: 'center'
+            styles: { fontSize: 10, cellPadding: 2, overflow: 'linebreak' },
+            columnStyles: {
+                0: { cellWidth: 15 },
+                1: { cellWidth: 20 },
+                2: { cellWidth: 25 },
+                3: { cellWidth: 20 },
+                4: { cellWidth: 25 },
+                5: { cellWidth: 'auto' },
             },
-            bodyStyles: {
-                textColor: [52, 58, 64],
-                halign: 'center'
-            },
-            alternateRowStyles: {
-                fillColor: [248, 249, 250]
-            },
-            didDrawPage: function (data) {
-                doc.setFontSize(10);
-                doc.text('Página ' + doc.internal.getNumberOfPages(), data.settings.margin.left, doc.internal.pageSize.height - 10);
-                doc.text('Generado por el Sistema de Gestión de Pagos', doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 10, { align: 'center' });
-            }
+            headStyles: { fillColor: [93, 2, 28] },
+            margin: { top: 15 },
         });
-
-        doc.setFontSize(22);
-        doc.setTextColor(93, 2, 28);
-        doc.text("Historial de Pagos", 14, 20);
-
-        doc.setFontSize(10);
-        doc.setTextColor(0);
-        doc.text(`Fecha de Emisión: ${new Date().toLocaleDateString()}`, 14, 30);
-        doc.text(`Total de Cuotas Registradas: ${cuotasFiltradasYOrdenadas.length}`, 14, 35);
-        if (filtro) {
-            doc.text(`Filtro Aplicado: "${filtro}"`, 14, 40);
-        }
-        if (ordenarPor) {
-            doc.text(`Ordenado por: ${ordenarPor} (${ordenDireccion === 'asc' ? 'Ascendente' : 'Descendente'})`, 14, 45);
-        }
-
-        doc.save('historial_pagos_detallado.pdf');
+        doc.save('historial_pagos.pdf');
     };
 
     return (
-        <Card className="shadow-sm">
-            <Card.Header className="bg-success text-white d-flex justify-content-between align-items-center">
+        <Card className="sombra-pequena seccion-tabla">
+            <Card.Header className="bg-success text-white">
                 <h5 className="mb-0">Historial de Pagos</h5>
-                <div className="d-flex align-items-center">
-                    <Form.Control
-                        type="text"
-                        placeholder="Buscar en historial..."
-                        value={filtro}
-                        onChange={manejarFiltroChange}
-                        className="me-2"
-                        style={{ width: 'auto' }}
-                    />
-                    <Button onClick={handleExportPDF} variant="light" className="ms-2">
-                        Exportar a PDF
-                    </Button>
-                </div>
             </Card.Header>
             <Card.Body>
-                {cuotasFiltradasYOrdenadas.length === 0 && cuotasPagadas.length > 0 ? (
-                    <Alert variant="warning">No se encontraron resultados para su búsqueda.</Alert>
-                ) : cuotasPagadas.length === 0 ? (
-                    <Alert variant="info">No tenés pagos registrados.</Alert>
+                <div className="controles-tabla">
+                    <Form.Group className="mb-2 grupo-filtro">
+                        <Form.Label>Filtrar por Período:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Buscar..."
+                            value={filtroTexto}
+                            onChange={manejarFiltroTextoChange}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-2 grupo-filtro">
+                        <Form.Label>Filtrar por Estado:</Form.Label>
+                        <Form.Select value={filtroEstado} onChange={manejarFiltroEstadoChange}>
+                            <option value="Todos">Todos</option>
+                            <option value="Pagada">Pagada</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Vencida">Vencida</option>
+                        </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-2 grupo-filtro">
+                        <Form.Label>Filtrar por Año:</Form.Label>
+                        <Form.Select value={filtroAnio} onChange={manejarFiltroAnioChange}>
+                            {aniosDisponibles.map(anio => (
+                                <option key={anio} value={anio}>{anio}</option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
+                </div>
+                {cuotasPagadas.length === 0 ? (
+                    <Alert variant="info" className="texto-centrado">No hay pagos registrados.</Alert>
                 ) : (
-                    <Table striped bordered hover responsive className="text-center">
+                    <Table striped bordered hover responsive>
                         <thead>
                             <tr>
                                 <th onClick={() => manejarOrdenacion('nro')} style={{ cursor: 'pointer' }}>
@@ -156,12 +159,8 @@ const HistorialDePagos = ({ cuotasPagadas }) => {
                                 <th onClick={() => manejarOrdenacion('periodo')} style={{ cursor: 'pointer' }}>
                                     Período {renderSortIcon('periodo')}
                                 </th>
-                                <th onClick={() => manejarOrdenacion('importe')} style={{ cursor: 'pointer' }}>
-                                    Importe {renderSortIcon('importe')}
-                                </th>
-                                <th onClick={() => manejarOrdenacion('estado')} style={{ cursor: 'pointer' }}>
-                                    Estado {renderSortIcon('estado')}
-                                </th>
+                                <th>Importe</th>
+                                <th>Estado</th>
                                 <th onClick={() => manejarOrdenacion('fechaPago')} style={{ cursor: 'pointer' }}>
                                     Fecha de Pago {renderSortIcon('fechaPago')}
                                 </th>
@@ -189,6 +188,13 @@ const HistorialDePagos = ({ cuotasPagadas }) => {
                             ))}
                         </tbody>
                     </Table>
+                )}
+                {cuotasPagadas.length > 0 && (
+                    <div className="d-flex justify-content-end mt-3">
+                        <Button onClick={generarPDF} variant="success">
+                            Generar PDF
+                        </Button>
+                    </div>
                 )}
             </Card.Body>
         </Card>

@@ -44,35 +44,3 @@ tbody tr:hover {
     padding: 5px 10px;
     border-radius: 5px;
 }
-
-.estado-pendiente {
-    color: #fff;
-    background-color: var(--color-estado-pendiente);
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.btn {
-    background-color: var(--color-principal);
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-.btn-pagar {
-    background-color: #28a745;
-}
-
-.btn-pagar:hover {
-    background-color: #218838;
-}
