@@ -57,7 +57,7 @@ h2 {
     color: white !important;
 }
 
-/a clase de la cabecera roja */
+/* clase de la cabecera roja */
 .cabecera-estado-cuenta {
     background-color: var(--color-principal);
     padding: 20px;
