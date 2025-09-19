@@ -25,7 +25,7 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: auto;
     flex-grow: 0;
-    text-align: center; /* Centra el texto dentro de la tarjeta */
+    text-align: center; 
 }
 
 .tarjeta-resumen:hover {
@@ -57,7 +57,7 @@ h2 {
     color: white !important;
 }
 
-/* Restauramos la clase de la cabecera roja */
+/a clase de la cabecera roja */
 .cabecera-estado-cuenta {
     background-color: var(--color-principal);
     padding: 20px;
@@ -68,12 +68,17 @@ h2 {
 .titulo-seccion-blanco {
     color: white;
     font-weight: 600;
-    font-size: 2rem; /* Aumentado */
+    font-size: 2rem; 
 }
 
 /* Aumentamos el tamaño de la fuente para el texto de "Portal Alumno" */
 .portal-alumno-texto {
     color: white;
-    font-size: 1.25rem; /* Aumentado */
+    font-size: 1.25rem; 
     margin-top: 5px;
+}
+
+.subtitulo-seccion {
+    color: var(--color-principal);
+    font-weight: 550;
 }

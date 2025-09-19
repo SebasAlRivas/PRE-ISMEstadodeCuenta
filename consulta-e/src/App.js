@@ -10,6 +10,18 @@ function App() {
             dni: "34567890",
             rol: "Alumno",
             cuotas: [
+                // Nuevas cuotas del 2024 (todas pagadas)
+                { id: 14, nro: 1, periodo: 'Febrero 2024', importe: 30000, vencimiento: '2024-02-10', estado: 'Pagada', fechaPago: '2024-02-09', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_5.pdf' },
+                { id: 15, nro: 2, periodo: 'Marzo 2024', importe: 35000, vencimiento: '2024-03-10', estado: 'Pagada', fechaPago: '2024-03-11', medioPago: 'Rapipago', comprobanteUrl: 'comprobante_6.pdf' },
+                { id: 16, nro: 3, periodo: 'Abril 2024', importe: 40000, vencimiento: '2024-04-10', estado: 'Pagada', fechaPago: '2024-04-10', medioPago: 'Mercado Pago', comprobanteUrl: 'comprobante_7.pdf' },
+                { id: 17, nro: 4, periodo: 'Mayo 2024', importe: 45000, vencimiento: '2024-05-10', estado: 'Pagada', fechaPago: '2024-05-09', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_8.pdf' },
+                { id: 18, nro: 5, periodo: 'Junio 2024', importe: 50000, vencimiento: '2024-06-10', estado: 'Pagada', fechaPago: '2024-06-12', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_9.pdf' },
+                { id: 19, nro: 6, periodo: 'Julio 2024', importe: 55000, vencimiento: '2024-07-10', estado: 'Pagada', fechaPago: '2024-07-10', medioPago: 'Rapipago', comprobanteUrl: 'comprobante_10.pdf' },
+                { id: 20, nro: 7, periodo: 'Agosto 2024', importe: 60000, vencimiento: '2024-08-10', estado: 'Pagada', fechaPago: '2024-08-08', medioPago: 'Mercado Pago', comprobanteUrl: 'comprobante_11.pdf' },
+                { id: 21, nro: 8, periodo: 'Septiembre 2024', importe: 65000, vencimiento: '2024-09-10', estado: 'Pagada', fechaPago: '2024-09-09', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_12.pdf' },
+                { id: 22, nro: 9, periodo: 'Octubre 2024', importe: 70000, vencimiento: '2024-10-10', estado: 'Pagada', fechaPago: '2024-10-09', medioPago: 'Mercado Pago', comprobanteUrl: 'comprobante_13.pdf' },
+                
+                // Cuotas del 2025
                 { id: 1, nro: 1, periodo: 'Marzo 2025', importe: 20000, vencimiento: '2025-03-10', estado: 'Pagada', fechaPago: '2025-03-09', medioPago: 'Transferencia', comprobanteUrl: 'comprobante_1.pdf' },
                 { id: 2, nro: 2, periodo: 'Abril 2025', importe: 20000, vencimiento: '2025-04-10', estado: 'Pagada', fechaPago: '2025-04-11', medioPago: 'Rapipago', comprobanteUrl: 'comprobante_2.pdf' },
                 { id: 3, nro: 3, periodo: 'Mayo 2025', importe: 20000, vencimiento: '2025-05-10', estado: 'Vencida', fechaPago: null, medioPago: null, comprobanteUrl: null },
@@ -44,7 +56,7 @@ function App() {
     // Para ver como alumno:
     // const [usuario, setUsuario] = useState(alumnos[0]);
     // Para ver como Administrativo, descomenta la línea de abajo y comenta la de arriba:
-     const [usuario, setUsuario] = useState(administrativa);
+    const [usuario, setUsuario] = useState(administrativa);
 
     const manejarPago = (importePagado) => {
         alert(`Se ha intentado realizar un pago por $${importePagado.toLocaleString('es-AR')}`);

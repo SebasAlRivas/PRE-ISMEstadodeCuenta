@@ -9,11 +9,11 @@ import './EstadoCuenta.css';
 const VistaAdministrativa = ({ alumnos, manejarPago }) => {
     const [busqueda, setBusqueda] = useState('');
     const [alumnoEncontrado, setAlumnoEncontrado] = useState(null);
-    const [mensajeError, setMensajeError] = useState('');
+    const [mensajeError, setMensajeError] = useState(null);
 
     const manejarBusqueda = (event) => {
         event.preventDefault();
-        setMensajeError('');
+        setMensajeError(null);
         setAlumnoEncontrado(null);
 
         const alumnoBuscado = alumnos.find(a =>
@@ -84,7 +84,8 @@ const EstadoDeCuentaAlumnoEncontrado = ({ usuario, manejarPago }) => {
         <Container fluid>
             <Row className="mb-4 text-center">
                 <Col md={12}>
-                    <h2 className="titulo-seccion mb-4">Estado de Cuenta del Alumno</h2>
+                    <h2 className="titulo-seccion mb-2">Estado de Cuenta</h2>
+                    <h4 className="subtitulo-seccion mb-4">{usuario.nombre}</h4> 
                 </Col>
             </Row>
 
