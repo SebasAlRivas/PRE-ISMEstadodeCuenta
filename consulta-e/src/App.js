@@ -6,7 +6,7 @@ import EstadoCuenta from './components/EstadoCuenta';
 function App() {
     const alumnos = [
         {
-            nombre: "Juan Pérez",
+            nombre: "Juan Perez",
             dni: "34567890",
             rol: "Alumno",
             cuotas: [
@@ -33,7 +33,7 @@ function App() {
             ]
         },
         {
-            nombre: "María Lopez",
+            nombre: "Maria Lopez",
             dni: "12345678",
             rol: "Alumno",
             cuotas: [
@@ -47,7 +47,7 @@ function App() {
     ];
 
     const administrativa = {
-        nombre: "Secretaría Administrativa",
+        nombre: "Secretaria Administrativa",
         dni: "00000001",
         rol: "Administrativo",
         cuotas: [] 
