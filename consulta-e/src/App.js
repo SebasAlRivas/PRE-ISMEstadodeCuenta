@@ -54,9 +54,9 @@ function App() {
     };
 
     // Para ver como alumno:
-    // const [usuario] = useState(alumnos[0]);
+     const [usuario] = useState(alumnos[0]);
     // Para ver como Administrativo, descomenta la línea de abajo y comenta la de arriba:
-    const [usuario] = useState(administrativa);
+    //const [usuario] = useState(administrativa);
 
     const manejarPago = (importePagado) => {
         alert(`Se ha intentado realizar un pago por $${importePagado.toLocaleString('es-AR')}`);
