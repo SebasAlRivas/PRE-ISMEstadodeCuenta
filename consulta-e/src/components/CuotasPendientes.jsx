@@ -16,6 +16,7 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
                                 <th>Nro</th>
                                 <th>Período</th>
                                 <th>Importe</th>
+                                <th>Recargo</th> {/* ⬅️ COLUMNA AGREGADA */}
                                 <th>Vencimiento</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
@@ -27,6 +28,8 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
                                     <td>{cuota.nro}</td>
                                     <td>{cuota.periodo}</td>
                                     <td>${cuota.importe.toLocaleString('es-AR')}</td>
+                                    {/* ⬅️ CAMPO DEL RECARGO con formato de pesos (es-AR) */}
+                                    <td>${cuota.recargo ? cuota.recargo.toLocaleString('es-AR') : '0,00'}</td> 
                                     <td>{cuota.vencimiento}</td>
                                     <td>
                                         <Badge 
@@ -40,7 +43,8 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
                                         <Button 
                                             variant="primary" 
                                             size="sm" 
-                                            onClick={() => manejarPago(cuota.importe)}
+                                            // Se suma el importe más el recargo (si existe) para la función manejarPago
+                                            onClick={() => manejarPago(cuota.importe + (cuota.recargo || 0))}
                                         >
                                             <FaMoneyBillWave /> Pagar
                                         </Button>

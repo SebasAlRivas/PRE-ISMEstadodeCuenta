@@ -20,7 +20,9 @@ const EstadoCuenta = ({ usuario, alumnos, manejarPago }) => {
     // Si el rol es 'Alumno', muestra la vista de alumno
     const cuotasImpagas = usuario.cuotas.filter(cuota => cuota.estado === 'Vencida' || cuota.estado === 'Pendiente');
     const cuotasPagadas = usuario.cuotas.filter(cuota => cuota.estado === 'Pagada');
-    const deudaTotal = cuotasImpagas.reduce((total, cuota) => total + cuota.importe, 0);
+    
+    const deudaTotal = cuotasImpagas.reduce((total, cuota) => total + cuota.importe + (cuota.recargo || 0), 0);
+    
     const cuotasVencidasCount = usuario.cuotas.filter(cuota => cuota.estado === 'Vencida').length;
 
     return (
@@ -37,6 +39,7 @@ const EstadoCuenta = ({ usuario, alumnos, manejarPago }) => {
                     <Card className="resumen-card tarjeta-deuda shadow-sm text-center">
                         <Card.Body>
                             <h5 className="mb-0">Deuda Total</h5>
+                            {/* Muestra la deuda total que ahora incluye el recargo */}
                             <h3 className="mb-0">${deudaTotal.toLocaleString('es-AR')}</h3>
                         </Card.Body>
                     </Card>
