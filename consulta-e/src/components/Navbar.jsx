@@ -8,7 +8,7 @@ const AppNavbar = ({ reporteActivo, onCambioReporte }) => {
         <Navbar expand="lg" variant="dark" className="barra-navegacion flex-column align-items-center">
             <Navbar.Brand className="texto-centrado ancho-completo mb-3">
                 <i className="bi bi-bank me-2"></i>
-                Gestión ISM
+                Gestión ISDM
             </Navbar.Brand>
             <Nav className="flex-column texto-centrado ancho-completo">
                 <Nav.Link

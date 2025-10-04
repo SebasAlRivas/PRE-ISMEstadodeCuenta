@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import AppNavbar from './components/Navbar';
 import EstadoCuenta from './components/EstadoCuenta';
-
+import Footer from './components/Footer';
 function App() {
     const alumnos = [
         {
@@ -79,9 +79,7 @@ function App() {
                 <main className="flex-grow-1 p-4">
                     {renderMainContent()}
                 </main>
-                <footer className="pie-de-pagina">
-                    <p>&copy; 2025 Instituto Superior del Milagro. Todos los derechos reservados.</p>
-                </footer>
+                <Footer />
             </div>
         </div>
     );
