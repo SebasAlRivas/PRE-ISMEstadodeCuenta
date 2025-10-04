@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-// ----------------------------------------------------
-// ✅ RUTA CORREGIDA: Subir de 'components' (..) y entrar a 'assets'.
+
 import LogoISDM from '../assets/logo_isdm.png'; 
-// ----------------------------------------------------
 
 /**
  * Componente funcional para el pie de página.
@@ -18,29 +16,26 @@ const Footer = () => {
     color: 'white',
     padding: '15px 0',
     textAlign: 'center',
-    position: 'fixed', // Fija el footer en la parte inferior de la ventana
-    bottom: 0,
     width: '100%',
     boxShadow: '0 -1px 5px rgba(0, 0, 0, 0.2)',
     fontSize: '0.85em',
-    zIndex: 100,
-    // Estilos Flexbox para centrar el contenido principal
     display: 'flex',
-    flexDirection: 'column', // Apila el copyright/logo sobre los enlaces
+    flexDirection: 'column', 
     alignItems: 'center',
     gap: '5px', 
+    marginTop: 'auto',  
   };
   
   // Estilos del contenedor del logo y texto de copyright
   const copyrightContainerStyle = {
     display: 'flex',
-    alignItems: 'center', // Alinea verticalmente el logo y el texto
-    gap: '10px', // Espacio entre el logo y el texto
+    alignItems: 'center', 
+    gap: '10px', 
   };
 
   // Estilo específico para la imagen del logo
   const logoStyle = {
-    height: '30px', // Tamaño del logo (ajusta este valor si es muy pequeño/grande)
+    height: '50px', 
     width: 'auto',
   };
 
@@ -58,28 +53,27 @@ const Footer = () => {
       {/* Contenedor del Logo y Texto de Copyright */}
       <div style={copyrightContainerStyle}>
           <img 
-              src={LogoISDM} // Fuente de la imagen importada
+              src={LogoISDM} 
               alt="Logo ISDM" 
-              style={logoStyle} // Estilos para el tamaño
+              style={logoStyle} 
           />
           <p style={{ margin: 0 }}>
-            © {currentYear} Consulta-E. Todos los derechos reservados.
+            © {currentYear} Instituo Superior del Milagro.
           </p>
       </div>
 
       {/* Contenedor de Enlaces Legales/Contacto */}
       <div>
-        <a href="#politica" style={linkStyle}>
-          Política de Privacidad
+        <a href="https://www.facebook.com/InstitutoSuperiorMilagrotica" style={linkStyle}>
+          Facebook
         </a>
         &nbsp;|&nbsp;
-        <a href="#terminos" style={linkStyle}>
-          Términos de Servicio
+        <a href="https://www.instagram.com/institutosuperiormilagro/" style={linkStyle}>
+          Instagram
         </a>
-        &nbsp;|&nbsp;
-        <a href="mailto:contacto@consulta-e.com" style={linkStyle}>
-          Contáctanos
-        </a>
+        <p>
+          Alvarado 951, Salta Capital
+        </p>
       </div>
     </footer>
   );
