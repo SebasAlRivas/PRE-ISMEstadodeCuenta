@@ -12,7 +12,7 @@ const Footer = () => {
 
   // Estilos del contenedor principal del footer
   const footerStyle = {
-    backgroundColor: '#282c34', 
+    backgroundColor: '#970021ff', 
     color: 'white',
     padding: '15px 0',
     textAlign: 'center',
